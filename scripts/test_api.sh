@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 设置API基础URL
-BASE_URL="http://localhost:8080/api/v1"
+BASE_URL="http://localhost:8090/api/v1"
 
 # 测试获取日志接口 - 无参数
 echo "测试获取日志接口 - 无参数"

@@ -2,13 +2,14 @@
 FROM golang:1.20-alpine AS builder
 
 # 设置工作目录
-WORKDING /app
+WORKDIR /app
 
 # 复制go mod文件
 COPY go.mod go.sum ./
 
-# 下载依赖
-RUN go mod download
+# 设置GOPROXY环境变量并下载依赖
+RUN go env -w GOPROXY=https://goproxy.cn,direct && \
+    go mod download
 
 # 复制源代码
 COPY . .
@@ -33,7 +34,7 @@ WORKDIR /app
 COPY --from=builder /app/chat_log_server .
 
 # 暴露端口
-EXPOSE 8080
+EXPOSE 8090
 
 # 运行应用
 CMD ["./chat_log_server"]

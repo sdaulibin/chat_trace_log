@@ -42,11 +42,11 @@ go build -o chat_log_server
 ./chat_log_server
 ```
 
-服务将在 http://localhost:8080 上启动
+服务将在 http://localhost:8090 上启动
 
 ## API文档
 
-启动服务后，可以通过访问 http://localhost:8080/swagger/index.html 查看完整的API文档。
+启动服务后，可以通过访问 http://localhost:8090/swagger/index.html 查看完整的API文档。
 
 ### 主要API端点
 

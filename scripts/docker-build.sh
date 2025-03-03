@@ -60,10 +60,10 @@ echo "
    ./scripts/docker-build.sh -r docker.io/username
 
 4. 运行容器：
-   docker run -d -p 8080:8080 ${DOCKER_REGISTRY}${IMAGE_NAME}:${IMAGE_VERSION}
+   docker run -d -p 8090:8090 ${DOCKER_REGISTRY}${IMAGE_NAME}:${IMAGE_VERSION}
 
 5. 查看容器日志：
    docker logs $(docker ps -qf ancestor=${DOCKER_REGISTRY}${IMAGE_NAME}:${IMAGE_VERSION})
 
-服务器将在 http://localhost:8080 上启动
+服务器将在 http://localhost:8090 上启动
 "

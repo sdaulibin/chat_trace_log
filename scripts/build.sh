@@ -84,5 +84,5 @@ echo "
    - Linux/MacOS: ./chat_log_server
    - Windows: 双击chat_log_server.exe
 
-服务器将在 http://localhost:8080 上启动
+服务器将在 http://localhost:8090 上启动
 "
