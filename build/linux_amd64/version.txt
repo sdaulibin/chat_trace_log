@@ -1,2 +1,0 @@
-Chat Log Server v1.0.0
-Build for linux/amd64
