@@ -12,11 +12,11 @@ VERSION="1.0.0"
 
 # 定义目标平台
 PLATFORMS=(
-    "darwin/amd64"
-    "darwin/arm64"
+#    "darwin/amd64"
+#    "darwin/arm64"
     "linux/amd64"
-    "linux/arm64"
-    "windows/amd64"
+#    "linux/arm64"
+#    "windows/amd64"
 )
 
 # 编译函数

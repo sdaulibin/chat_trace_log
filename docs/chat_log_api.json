@@ -7,69 +7,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8080/api/v1",
+      "url": "http://10.238.165.208:8090/api/v1",
       "description": "开发服务器"
     }
   ],
   "paths": {
     "/logs": {
-      "get": {
-        "description": "获取指定日期范围内的聊天日志",
-        "operationId": "getLogs",
-        "parameters": [
-          {
-            "name": "start_date",
-            "in": "query",
-            "description": "开始日期 (YYYY-MM-DD)",
-            "schema": {
-              "type": "string",
-              "format": "date"
-            }
-          },
-          {
-            "name": "end_date",
-            "in": "query",
-            "description": "结束日期 (YYYY-MM-DD)",
-            "schema": {
-              "type": "string",
-              "format": "date"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功获取日志",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LogsResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "请求参数错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "服务器内部错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "deprecated": false
-      },
       "post": {
         "description": "创建一条新的聊天日志记录",
         "operationId": "createLog",
@@ -136,99 +79,6 @@
             "type": "boolean",
             "description": "验证结果",
             "example": true
-          }
-        }
-      },
-      "LogResponse": {
-        "type": "object",
-        "description": "单条日志操作的响应结果",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "description": "操作状态码",
-            "example": 200
-          },
-          "message": {
-            "type": "string",
-            "description": "操作消息",
-            "example": "日志保存成功"
-          },
-          "data": {
-            "type": "object",
-            "description": "日志数据",
-            "properties": {
-              "id": {
-                "type": "string",
-                "description": "日志唯一标识符",
-                "example": "1672567200000000000"
-              },
-              "text": {
-                "type": "string",
-                "description": "聊天文本内容",
-                "example": "这是一条聊天记录"
-              },
-              "validation_result": {
-                "type": "boolean",
-                "description": "验证结果",
-                "example": true
-              }
-            }
-          }
-        }
-      },
-      "LogsResponse": {
-        "type": "object",
-        "description": "多条日志查询的响应结果",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "description": "操作状态码",
-            "example": 200
-          },
-          "message": {
-            "type": "string",
-            "description": "操作消息",
-            "example": "成功获取日志"
-          },
-          "data": {
-            "type": "array",
-            "description": "日志数据列表",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "description": "日志唯一标识符",
-                  "example": "1672567200000000000"
-                },
-                "text": {
-                  "type": "string",
-                  "description": "聊天文本内容",
-                  "example": "这是一条聊天记录"
-                },
-                "validation_result": {
-                  "type": "boolean",
-                  "description": "验证结果",
-                  "example": true
-                }
-              }
-            }
-          }
-        }
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "description": "错误响应",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "description": "错误代码",
-            "example": 400
-          },
-          "message": {
-            "type": "string",
-            "description": "错误信息",
-            "example": "无效的日期参数"
           }
         }
       }

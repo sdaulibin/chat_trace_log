@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/swaggo/files"
-	"github.com/swaggo/gin-swagger"
 	_ "github.com/binginx/bqd_chat_log/docs" // 导入swagger文档
 	"github.com/binginx/bqd_chat_log/handlers"
 	"github.com/binginx/bqd_chat_log/models"
+	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // @title           Chat Log API
@@ -42,5 +42,5 @@ func main() {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// 启动服务器
-	r.Run(":8080")
+	r.Run(":8090")
 }
