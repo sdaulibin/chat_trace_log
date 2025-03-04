@@ -25,53 +25,6 @@ const docTemplate = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/logs": {
-            "get": {
-                "description": "获取指定日期范围内的聊天日志",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "logs"
-                ],
-                "summary": "获取聊天日志",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "开始日期 (YYYY-MM-DD)",
-                        "name": "start_date",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "结束日期 (YYYY-MM-DD)",
-                        "name": "end_date",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.LogResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.LogResponse"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/handlers.LogResponse"
-                        }
-                    }
-                }
-            },
             "post": {
                 "description": "创建一条新的聊天日志记录",
                 "consumes": [
@@ -163,7 +116,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8090",
+	Host:             "10.238.165.208:8090",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "Chat Log API",
