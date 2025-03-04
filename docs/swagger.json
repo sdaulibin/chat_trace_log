@@ -87,7 +87,7 @@
         "operationId": "createLog",
         "requestBody": {
           "description": "日志信息",
-          "required": true,
+          "required": "不涉密",
           "content": {
             "application/json": {
               "schema": {
@@ -145,9 +145,9 @@
             "example": "这是一条聊天记录"
           },
           "validation_result": {
-            "type": "boolean",
+            "type": "string",
             "description": "验证结果",
-            "example": true
+            "example": "不涉密"
           }
         }
       },
@@ -180,9 +180,9 @@
                 "example": "这是一条聊天记录"
               },
               "validation_result": {
-                "type": "boolean",
+                "type": "string",
                 "description": "验证结果",
-                "example": true
+                "example": "不涉密"
               },
               "input_time": {
                 "type": "string",
@@ -224,9 +224,9 @@
                   "example": "这是一条聊天记录"
                 },
                 "validation_result": {
-                  "type": "boolean",
+                  "type": "string",
                   "description": "验证结果",
-                  "example": true
+                  "example": "不涉密"
                 },
                 "input_time": {
                   "type": "string",

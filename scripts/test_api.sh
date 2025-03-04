@@ -17,28 +17,28 @@ echo -e "\n"
 echo "测试创建日志接口 - 基本测试"
 curl -X POST "${BASE_URL}/logs" \
   -H "Content-Type: application/json" \
-  -d '{"text":"这是一条测试日志","validation_result":true}'
+  -d '{"text":"这是一条测试日志","validation_result":"不涉密"}'
 echo -e "\n"
 
 # 测试创建日志接口 - 空文本
 echo "测试创建日志接口 - 空文本"
 curl -X POST "${BASE_URL}/logs" \
   -H "Content-Type: application/json" \
-  -d '{"text":"","validation_result":true}'
+  -d '{"text":"","validation_result":"不涉密"}'
 echo -e "\n"
 
 # 测试创建日志接口 - 长文本
 echo "测试创建日志接口 - 长文本"
 curl -X POST "${BASE_URL}/logs" \
   -H "Content-Type: application/json" \
-  -d '{"text":"这是一条非常长的测试日志内容，用于测试API处理长文本的能力。这是一条非常长的测试日志内容，用于测试API处理长文本的能力。这是一条非常长的测试日志内容，用于测试API处理长文本的能力。","validation_result":true}'
+  -d '{"text":"这是一条非常长的测试日志内容，用于测试API处理长文本的能力。这是一条非常长的测试日志内容，用于测试API处理长文本的能力。这是一条非常长的测试日志内容，用于测试API处理长文本的能力。","validation_result":"不涉密"}'
 echo -e "\n"
 
 # 测试创建日志接口 - 特殊字符
 echo "测试创建日志接口 - 特殊字符"
 curl -X POST "${BASE_URL}/logs" \
   -H "Content-Type: application/json" \
-  -d '{"text":"特殊字符测试：!@#$%^&*()_+-=[]{}|;:,.<>?","validation_result":true}'
+  -d '{"text":"特殊字符测试：!@#$%^&*()_+-=[]{}|;:,.<>?","validation_result":"不涉密"}'
 echo -e "\n"
 
 # 测试创建日志接口 - 无验证结果

@@ -18,7 +18,7 @@ type ChatLog struct {
 	// 聊天文本内容
 	Text string `json:"text" binding:"required" example:"这是一条聊天记录"`
 	// 验证结果
-	ValidationResult bool `json:"validation_result" example:"true"`
+	ValidationResult string `json:"validation_result" example:"不涉密"`
 	// 输入时间
 	InputTime string `json:"input_time" example:"2023-01-01 12:00:00.000"`
 }
@@ -74,10 +74,10 @@ func SaveLog(log *ChatLog) error {
 		randompart := generateRandomString(randomPartLength)
 		log.ID = timepart + randompart
 	}
-	
+
 	// 设置输入时间
 	log.InputTime = time.Now().Format(timeFormat)
-	
+
 	// 按日期组织文件
 	currentTime := time.Now()
 	dateStr := currentTime.Format(dateFormat)
@@ -133,7 +133,7 @@ func SaveLog(log *ChatLog) error {
 		return fmt.Errorf("打开日志文件失败: %w", err)
 	}
 	defer file.Close()
-	
+
 	if _, err := file.Write(data); err != nil {
 		return fmt.Errorf("写入日志文件失败: %w", err)
 	}
@@ -149,7 +149,7 @@ func GetLogs(startDate, endDate time.Time) ([]ChatLog, error) {
 	if endDate.IsZero() {
 		endDate = time.Now()
 	}
-	
+
 	// 如果开始日期为零值，设置为结束日期的前7天
 	if startDate.IsZero() {
 		startDate = endDate.AddDate(0, 0, -7)
@@ -160,13 +160,13 @@ func GetLogs(startDate, endDate time.Time) ([]ChatLog, error) {
 	for !current.After(endDate) {
 		dateStr := current.Format(dateFormat)
 		baseFilePath := filepath.Join(storageDir, dateStr)
-		
+
 		// 查找所有与该日期相关的日志文件
 		files, err := filepath.Glob(baseFilePath + "*.json")
 		if err != nil {
 			return nil, fmt.Errorf("查找日志文件失败: %w", err)
 		}
-		
+
 		// 处理找到的所有文件
 		for _, filePath := range files {
 			// 读取日志文件
@@ -174,17 +174,17 @@ func GetLogs(startDate, endDate time.Time) ([]ChatLog, error) {
 			if err != nil {
 				return nil, fmt.Errorf("读取日志文件失败: %w", err)
 			}
-			
+
 			// 解析日志
 			var logs []ChatLog
 			if err := json.Unmarshal(data, &logs); err != nil {
 				return nil, fmt.Errorf("解析日志文件失败: %w", err)
 			}
-			
+
 			// 添加到结果集
 			allLogs = append(allLogs, logs...)
 		}
-		
+
 		// 前进到下一天
 		current = current.AddDate(0, 0, 1)
 	}

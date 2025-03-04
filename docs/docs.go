@@ -89,7 +89,7 @@ const docTemplate = `{
                         "description": "日志信息",
                         "name": "request",
                         "in": "body",
-                        "required": true,
+                        "required": 不涉密,
                         "schema": {
                             "$ref": "#/definitions/handlers.CreateLogRequest"
                         }
@@ -133,8 +133,8 @@ const docTemplate = `{
                 },
                 "validation_result": {
                     "description": "验证结果",
-                    "type": "boolean",
-                    "example": true
+                    "type": "string",
+                    "example": "不涉密"
                 }
             }
         },

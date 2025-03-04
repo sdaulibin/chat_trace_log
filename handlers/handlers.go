@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	"github.com/binginx/bqd_chat_log/models"
+	"github.com/gin-gonic/gin"
 )
 
 // CreateLogRequest 创建日志请求结构
@@ -14,7 +14,7 @@ type CreateLogRequest struct {
 	// 聊天文本内容
 	Text string `json:"text" binding:"required" example:"这是一条聊天记录"`
 	// 验证结果
-	ValidationResult bool `json:"validation_result" example:"true"`
+	ValidationResult string `json:"validation_result" example:"不涉密"`
 }
 
 // LogResponse 日志响应结构

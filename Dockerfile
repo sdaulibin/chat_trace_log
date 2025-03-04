@@ -8,15 +8,15 @@ WORKDIR /app
 COPY go.mod go.sum ./
 
 # 设置GOPROXY环境变量并下载依赖
-RUN go env -w GOPROXY=https://goproxy.cn,direct && \
-    go mod download
+# RUN go env -w GOPROXY=https://goproxy.cn,direct && \
+#     go mod download
 
 # 复制源代码
 COPY . .
 
 # 生成swagger文档
-RUN go install github.com/swaggo/swag/cmd/swag@latest && \
-    swag init
+# RUN go install github.com/swaggo/swag/cmd/swag@latest && \
+#     swag init
 
 # 构建应用
 RUN CGO_ENABLED=0 GOOS=linux go build -o chat_log_server
@@ -36,5 +36,8 @@ COPY --from=builder /app/chat_log_server .
 # 暴露端口
 EXPOSE 8090
 
+# 创建logs目录
+RUN mkdir -p /app/logs
+
 # 运行应用
-CMD ["./chat_log_server"]
+CMD ["/bin/sh", "-c", "./chat_log_server > /app/logs/server.log 2>&1"]

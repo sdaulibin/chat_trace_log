@@ -58,7 +58,7 @@ go build -o chat_log_server
   ```json
   {
     "text": "这是一条聊天记录",
-    "validation_result": true
+    "validation_result": "不涉密"
   }
   ```
 - **成功响应** (200 OK):
@@ -69,7 +69,7 @@ go build -o chat_log_server
     "data": {
       "id": "1672567200000000000",
       "text": "这是一条聊天记录",
-      "validation_result": true,
+      "validation_result": "不涉密",
       "input_time": "2023-01-01 12:00:00.000"
     }
   }
@@ -91,7 +91,7 @@ go build -o chat_log_server
       {
         "id": "1672567200000000000",
         "text": "这是一条聊天记录",
-        "validation_result": true,
+        "validation_result": "不涉密",
         "input_time": "2023-01-01T12:00:00Z"
       }
     ]
